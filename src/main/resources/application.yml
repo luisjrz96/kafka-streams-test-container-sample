@@ -1,0 +1,19 @@
+spring:
+  config:
+    name: text-to-uppercase-stream
+
+spring.cloud.stream:
+  function.definition: process
+  bindings:
+      process-in-0:
+        destination: input-uppercase-topic
+        consumer:
+          key-serde: apache.kafka.common.serialization.Serdes$StringSerde
+          value-serde: apache.kafka.common.serialization.Serdes$StringSerde
+          content-type: application/text
+          group: demo-consumer
+      process-out-0:
+        destination: output-uppercase-topic
+  kafka:
+    binder:
+      brokers: localhost:9092
