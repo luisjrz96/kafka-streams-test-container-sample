@@ -58,7 +58,6 @@ public class UppercaseSampleApplicationTests {
                 "localhost", kafka.getFirstMappedPort())))) {
             System.setProperty("spring.cloud.stream.kafka.binder.brokers", kafka.getBootstrapServers());
             admin.createTopics(newTopics);
-            kafka.withEnv("auto.create.topics.enable","true");
         }
     }
 
